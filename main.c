@@ -66,21 +66,27 @@ void fetch_web_page(const char *url) {
     curl_global_cleanup();
 }
 int main() {
+    char pas[500];
     char url[500];
     char command[1000];
  char oldurl[500];
+ char oldpas[500];
  printf("Welcome to the official remote-shell cli | https://github.com/shourdev/rs-cli | API: {hosturl}/ex/ (GUIDE:https://github.com/shourdev/remote-shell#official-cli-client-) \n");
        printf("Enter the api url:");
     scanf("%s",oldurl);
+      printf("Enter the password:");
+    scanf("%s",oldpas);
     
     while (1){
-   
+    strcpy(pas,oldpas);
     strcpy(url,oldurl);
+    strcat(pas,"/");
+    strcat(url,pas);
  printf("Enter your command:");	
  scanf("%s",command);
  strcat(url,command);
-  
-fetch_web_page(url);
+
+ fetch_web_page(url);
 
 
  
