@@ -27,6 +27,17 @@ size_t write_callback(char *ptr, size_t size, size_t nmemb, void *userdata) {
 
     return total_size;
 }
+// function which replaces the commands whitespaces with "/"
+void replaceSpaces(char *str) {
+    int i;
+    int length = strlen(str);
+
+    for (i = 0; i < length; i++) {
+        if (str[i] == ' ') {
+            str[i] = '/';
+        }
+    }
+}
 
 // Function to retrieve the web page content and store it in the global variable
 void fetch_web_page(const char *url) {
@@ -74,16 +85,22 @@ int main() {
  printf("Welcome to the official remote-shell cli | https://github.com/shourdev/rs-cli | API: {hosturl}/ex/ (GUIDE:https://github.com/shourdev/remote-shell#official-cli-client-) \n");
        printf("Enter the api url:");
     scanf("%s",oldurl);
+     getchar();
       printf("Enter the password:");
     scanf("%s",oldpas);
-    
+     getchar();
+
     while (1){
     strcpy(pas,oldpas);
     strcpy(url,oldurl);
     strcat(pas,"/");
     strcat(url,pas);
  printf("Enter your command:");	
- scanf("%s",command);
+   fgets(command, sizeof(command), stdin);
+    
+ 
+    command[strcspn(command, "\n")] = '\0';
+ replaceSpaces(command);
  strcat(url,command);
 
  fetch_web_page(url);
