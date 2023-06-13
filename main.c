@@ -82,7 +82,7 @@ int main() {
     char command[1000];
  char oldurl[500];
  char oldpas[500];
- printf("Welcome to the official remote-shell cli | https://github.com/shourdev/rs-cli | API: {hosturl}/ex/ (GUIDE:https://github.com/shourdev/remote-shell#official-cli-client-) \n");
+ printf("Welcome to the official remote-shell cli | https://github.com/shourdev/rs-cli | API: {hosturl}/ (GUIDE:https://github.com/shourdev/remote-shell#official-cli-client-) \n");
        printf("Enter the api url:");
     scanf("%s",oldurl);
      getchar();
